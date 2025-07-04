@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Light Bulb On/Off</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body id="body" class="bg-gray-900 flex justify-center items-center min-h-screen transition-colors duration-500">
+  <div class="bg-white p-8 rounded-lg shadow-md text-center max-w-md w-full">
+    <h1 class="text-3xl font-bold text-gray-800 mb-8">Light Bulb Control</h1>
+
+    <div class="my-8">
+      <img id="bulb" src="https://www.w3schools.com/js/pic_bulboff.gif" alt="Light bulb"
+           class="w-24 h-auto mx-auto transition-transform duration-300 hover:scale-105 cursor-pointer" />
+    </div>
+
+    <div class="flex justify-center gap-4 mt-4">
+      <button id="onBtn" class="px-6 py-3 bg-green-500 text-white rounded hover:bg-green-600 transition-colors">
+        Turn On
+      </button>
+      <button id="offBtn" class="px-6 py-3 bg-red-500 text-white rounded hover:bg-red-600 transition-colors">
+        Turn Off
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const bulb = document.getElementById('bulb');
+      const onBtn = document.getElementById('onBtn');
+      const offBtn = document.getElementById('offBtn');
+      const body = document.getElementById('body');
+
+      function turnOn() {
+        bulb.src = "https://www.w3schools.com/js/pic_bulbon.gif";
+        body.classList.remove('bg-gray-900');
+        body.classList.add('bg-yellow-100');
+      }
+
+      function turnOff() {
+        bulb.src = "https://www.w3schools.com/js/pic_bulboff.gif";
+        body.classList.remove('bg-yellow-100');
+        body.classList.add('bg-gray-900');
+      }
+
+      onBtn.addEventListener('click', turnOn);
+      offBtn.addEventListener('click', turnOff);
+
+      bulb.addEventListener('click', function () {
+        if (bulb.src.includes("bulboff")) {
+          turnOn();
+        } else {
+          turnOff();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
